@@ -1,0 +1,18 @@
+services:
+- type: pserv
+  name: pgbouncer
+  env: docker
+  plan: standard
+  repo: https://github.com/renderinc/docker-pgbouncer
+  envVars:
+  - key: DATABASE_URL
+    sync: false
+  - key: POOL_MODE
+    value: transaction
+  - key: SERVER_RESET_QUERY
+    value: DISCARD ALL
+  - key: MAX_CLIENT_CONN
+    value: 500 
+  - key: DEFAULT_POOL_SIZE
+    value: 50
+
